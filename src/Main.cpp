@@ -4,7 +4,7 @@
  *  Created on: Mar 21, 2025
  *      Author: Mason Dunn
  * 
- * Most recent commit: New Ship class
+ * Most recent commit: Fixed capitalization on Ship class (ship became Ship)
  */
 
 #include <iostream>
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class ship {
+class Ship {
 protected:
 	string name;
 	string size;
@@ -20,12 +20,12 @@ protected:
 	int distanceTraveled = 0;
 
 public:
-	ship() {
+	Ship() {
 		name = "Stock Ship";
 		size = "small";
 		speed = 1;
 	}
-	ship(string n, string si, int sp) {
+	Ship(string n, string si, int sp) {
 		name = n;
 		size = si;
 		speed = sp;
@@ -46,10 +46,11 @@ public:
 
 	void move() {
 		distanceTraveled += speed;
-		cout << name << " just moved " << speed << " spaces!" << endl; 
+		cout << name << " just moved " << speed << " spaces!" << endl;
 	}
 };
 
 int main() {
+	Ship boat("The Boat", "Huge", 5);
 	return 0;
 }
