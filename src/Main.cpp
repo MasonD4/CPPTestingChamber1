@@ -10,40 +10,40 @@
 
 using namespace std;
 
-int add(const int&, const int&);
-
 class Ship {
-private:
+protected:
 	string name;
-	char size;
+	string purpose;
+	string size;
 	int speed;
-	int hullDurability;
 	int distanceTraveled;
 public:
 	Ship() {
 		name = "Stock Ship";
-		size = 's';
+		purpose = "Undetermined";
+		size = "small";
 		speed = 1;
-		hullDurability = 1;
+		distanceTraveled = 0;
 	}
-	Ship(string n, int si, int sp, int hD) {
+	Ship(string n, string p, string si, int sp) {
 		name = n;
+		purpose = p;
 		size = si;
 		speed = sp;
-		hullDurability = hD;
+		distanceTraveled = 0;
 	}
 
 	string getName() {
 		return name;
 	}
-	int getSize() {
+	string getPurpose() {
+		return purpose;
+	}
+	string getSize() {
 		return size;
 	}
 	int getSpeed() {
 		return speed;
-	}
-	int getHull() {
-		return hullDurability;
 	}
 	int getDistance() {
 		return distanceTraveled;
@@ -56,14 +56,36 @@ public:
 };
 
 class Airship : public Ship {
-	//
+protected:
+	int altitude;
+public:
+	Airship() {
+		name = "Stock Airhip";
+		purpose = "Undetermined";
+		size = "small";
+		speed = 1;
+		altitude = 0;
+		distanceTraveled = 0;
+	}
+	Airship(string n, string p, string si, int sp) {
+		name = n;
+		purpose = p;
+		size = si;
+		speed = sp;
+		altitude = 0;
+		distanceTraveled = 0;
+	}
+
+	int getAltitude() {
+		return altitude;
+	}
+	void increaseAltitude(int a) {
+		altitude += a;
+		if (a < 0) {a *= -1;}
+		distanceTraveled += a;
+	}
 };
 
 int main() {
-	cout << "Hello World!" << endl;
 	return 0;
-}
-
-int add(const int& a, const int& b) {
-	return a + b;
 }
