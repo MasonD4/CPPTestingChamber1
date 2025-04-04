@@ -48,6 +48,13 @@
 		 distanceTraveled += speed;
 		 cout << name << " just moved " << speed << " spaces!" << endl;
 	 }
+	 void printInfo() {
+		cout << "Type: Ship" << endl;
+		cout << "Name: " << name << endl;
+		cout << "Size: " << size << endl;
+		cout << "Speed: " << speed << endl;
+		cout << "Distance traveled: " << distanceTraveled << endl;
+	 }
  };
  
  class Airship : public Ship {
@@ -62,9 +69,9 @@
 		 cout << "This is the default Airship constructor.\nName: " << name << endl;
 	 }
 	 Airship(string n, string si, int sp) {
-		 name = "Stock Airship";
-		 size = "small";
-		 speed = 1;
+		 name = n;
+		 size = si;
+		 speed = sp;
 		 cout << "This is the <string, string, int> Airship constructor.\nName: " << name << endl;
 	 }
  
@@ -75,10 +82,22 @@
 		 }
 		 distanceTraveled += a;
 	 }
+	 void printInfo() {
+		cout << "Type: Airhip" << endl;
+		cout << "Name: " << name << endl;
+		cout << "Size: " << size << endl;
+		cout << "Speed: " << speed << endl;
+		cout << "Distance traveled: " << distanceTraveled << endl;
+		cout << "Altitude: " << altitude << endl;
+	 }
  };
  
  int main() {
 	 Ship boat("The Boat", "Huge", 5);
 	 Airship melonBird("Melon-Bird", "Large", 10);
+	 cout << endl;
+
+	 boat.printInfo();
+	 melonBird.printInfo();
 	 return 0;
  }
