@@ -9,6 +9,8 @@
  #include <string>
  
  using namespace std;
+
+void divideByZero();
  
 class Ship {
 protected:
@@ -103,4 +105,10 @@ int main() {
 	melonBird.printInfo();
 	stocky.printInfo();
 	return 0;
+}
+
+void divideByZero(){
+	for (int i = 0; i < 100; i++) {
+		cout << "NO NO NO NO NO NO NO NO NO ON" << endl;
+	}
 }
