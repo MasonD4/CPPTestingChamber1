@@ -5,12 +5,13 @@
  *      Author: Mason Dunn
  */
 
- #include <iostream>
- #include <string>
+#include <iostream>
+#include <string>
  
- using namespace std;
+using namespace std;
 
 void divideByZero();
+void airshipRace(Airship, Airship);
  
 class Ship {
 protected:
@@ -110,5 +111,17 @@ int main() {
 void divideByZero(){
 	for (int i = 0; i < 100; i++) {
 		cout << "NO NO NO NO NO NO NO NO NO ON" << endl;
+	}
+}
+
+void airshipRace(Airship a, Airship b) {
+	if (a.getSpeed() > b.getSpeed()) {
+		cout << a.getName() << " won!" << endl;
+	}
+	else if (b.getSpeed() > a.getSpeed()) {
+		cout << b.getName() << " won!" << endl;
+	}
+	else {
+		cout << "Tie!" << endl;
 	}
 }
