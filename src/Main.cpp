@@ -1,25 +1,22 @@
 /*
  * Main.cpp (For CPPTestingChamber1)
  *
- *  Created on: Mar 21, 2025
- *      Author: Mason Dunn
+ * Created on: Mar 21, 2025
+ *     Author: Mason Dunn
  */
 
 #include <iostream>
 #include <string>
- 
+  
 using namespace std;
-
-void divideByZero();
-void airshipRace(Airship, Airship);
- 
+  
 class Ship {
 protected:
 	string name;
 	string size;
 	int speed;
 	int distanceTraveled = 0;
- 
+  
 public:
 	Ship() {
 		name = "Stock Ship";
@@ -58,12 +55,18 @@ public:
 		cout << "Speed: " << speed << endl;
 		cout << "Distance traveled: " << distanceTraveled << endl;
 	}
+	void testCaller(){
+		cout << "[A]" << endl;
+		testCalled();
+	}
+	virtual void testCalled(){
+		cout << "Ring ring: Called Ship" << endl;
+	}
 };
- 
+  
 class Airship : public Ship {
 protected:
 	int altitude = 0;
- 
 public:
 	Airship() {
 		name = "Stock Airship";
@@ -94,34 +97,25 @@ public:
 		cout << "Altitude: " << altitude << endl;
 		return 0;
 	}
+	void testCalled(){
+		cout << "Ring ring: Called AIRShip" << endl;
+	}
 };
- 
+  
 int main() {
 	Ship boat("The Boat", "Huge", 5);
 	Airship melonBird("Melon-Bird", "Large", 10);
-	Airship stocky;
+	// Airship * aPTR = &melonBird;
 	cout << endl;
 
-	boat.printInfo();
-	melonBird.printInfo();
-	stocky.printInfo();
+	boat.testCaller();
+	melonBird.testCaller();
+	// aPTR->testCaller();
 	return 0;
 }
 
-void divideByZero(){
-	for (int i = 0; i < 100; i++) {
-		cout << "NO NO NO NO NO NO NO NO NO ON" << endl;
-	}
-}
+//
 
-void airshipRace(Airship a, Airship b) {
-	if (a.getSpeed() > b.getSpeed()) {
-		cout << a.getName() << " won!" << endl;
-	}
-	else if (b.getSpeed() > a.getSpeed()) {
-		cout << b.getName() << " won!" << endl;
-	}
-	else {
-		cout << "Tie!" << endl;
-	}
-}
+//
+
+//
