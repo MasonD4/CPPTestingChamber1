@@ -15,6 +15,7 @@ private:
 	int size;
 public:
 	Airship() {}
+	int getSize() {return size;}
 };
 
 int main() {
