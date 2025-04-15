@@ -12,6 +12,7 @@ using namespace std;
 
 class Airship {
 private:
+	int size;
 public:
 	Airship() {}
 };
