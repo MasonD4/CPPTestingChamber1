@@ -16,6 +16,7 @@ private:
 public:
 	Airship() {}
 	Airship(int s) {size = s;}
+	int getSize() {return size;}
 };
 
 int main() {
