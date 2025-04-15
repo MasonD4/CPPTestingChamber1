@@ -10,6 +10,12 @@
   
 using namespace std;
 
+class Airship {
+private:
+public:
+};
+
 int main() {
+	cout << "The program works!" << endl;
 	return 0;
 }
