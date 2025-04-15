@@ -18,6 +18,7 @@ public:
 	Airship(int s) {size = s;}
 	int getSize() {return size;}
 	void land() {cout << "The ship has landed!" << endl;}
+	void ascend() {cout << "The airship is ascending!" << endl;}
 };
 
 int main() {
