@@ -13,6 +13,7 @@ using namespace std;
 class Airship {
 private:
 public:
+	Airship() {}
 };
 
 int main() {
