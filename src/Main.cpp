@@ -10,20 +10,20 @@
   
 using namespace std;
 
-class Ship {
+class Vehicle {
 protected:
 	string name;
 	int xPosition;
 public:
-	Ship () {
-		name = "Unnamed ship";
+	Vehicle () {
+		name = "Unnamed vehicle";
 		xPosition = 0;
 	}
-	Ship (string n) {
+	Vehicle (string n) {
 		name = n;
 		xPosition = 0;
 	}
-	virtual string getName() {
+	string getName() {
 		return name;
 	}
 	int getXPos() {
@@ -32,23 +32,24 @@ public:
 	void move(int m) {
 		xPosition += m;
 	}
+	virtual void whatAreYou() {
+		cout << "I am a Vehicle" << endl;
+	}
 };
 
-class Aircraft {
-protected:
-	string name;
+class Airship : public Vehicle {
+private:
 	int yPosition;
 public:
-	Aircraft () {
-		name = "Unnamed aircraft";
+	Airship () {
+		name = "Unnamed airship";
+		xPosition = 0;
 		yPosition = 0;
 	}
-	Aircraft (string n) {
+	Airship (string n) {
 		name = n;
+		xPosition = 0;
 		yPosition = 0;
-	}
-	virtual string getName() {
-		return name;
 	}
 	int getYPos() {
 		return yPosition;
@@ -56,51 +57,47 @@ public:
 	void fly(int f) {
 		yPosition += f;
 	}
+	void whatAreYou() override {
+		cout << "I am an airship" << endl;
+	}
 };
 
-class Airship : public Ship, public Aircraft {
-	// name is inherited from both
-	// You have to specify which 'name' you're using.
-	// // Ship::name specifies that you are using Ship's name, not Aircraft's
-	// // I don't think it really matters which one. Itried replacing "Ship::name" with "Aircraft::name",
-	// // and it didn't seem to change the output.
-	// xPosition is inherited from Ship
-	// yPosition is inherited from Aircraft
-	// getName is overridden because there is one in Ship and Aircraft.
-public:
-	Airship () {
-		Ship::name = "Unnamed airship";
-		xPosition = 0;
+void RACE(Vehicle a, Vehicle b) {
+	if (a.getXPos() > b.getXPos()) {
+		cout << a.getName() << " won!" << endl;
 	}
-	Airship (string n) {
-		Ship::name = n;
-		xPosition = 0;
+	else if (b.getXPos() > a.getXPos()) {
+		cout << b.getName() << " won!" << endl;
 	}
-	string getName() override {
-		return Ship::name;
+	else {
+		cout << "TIE!" << endl;
 	}
-	int getXPos() {
-		return xPosition;
-	}
-	int getYPos() {
-		return yPosition;
-	}
-};
+}
 
 int main() {
-	Airship melonBird("Melon Bird");
-	Airship johnsShip;
-
-	cout << johnsShip.getName() << ": (" << johnsShip.getXPos() << ", " << johnsShip.getYPos() << ")" << endl;
-	johnsShip.move(10);
-	johnsShip.fly(5);
-	cout << johnsShip.getName() << ": (" << johnsShip.getXPos() << ", " << johnsShip.getYPos() << ")" << endl;
+	// Basically ` Base *base = new Derived `
+	Vehicle *melonBird = new Airship("Melon Bird");
+	melonBird->move(458);
 	
-	cout << endl;
+	Airship johnsShip;
+	johnsShip.move(10); 
+	johnsShip.fly(5);
 
-	cout << melonBird.getName() << ": (" << melonBird.getXPos() << ", " << melonBird.getYPos() << ")" << endl;
-	melonBird.move(45); 
-	melonBird.fly(8);
-	cout << melonBird.getName() << ": (" << melonBird.getXPos() << ", " << melonBird.getYPos() << ")" << endl;
+	Airship Halberd("The Battleship Halberd");
+	Halberd.fly(55);
+	Halberd.move(1000);
+
+	Vehicle *ptrToHalberd = &Halberd;
+	ptrToHalberd->move(15);
+
+	Vehicle janesCar;
+	janesCar.move(88);
+
+	RACE(janesCar, *melonBird);
+	RACE(Halberd, johnsShip);
+	RACE(janesCar, *ptrToHalberd);
+	cout << "Halberd: "; Halberd.whatAreYou();
+	cout << "Jane's car: "; janesCar.whatAreYou();
+	cout << "Melon Bird: "; melonBird->whatAreYou();
 	return 0;
 }
