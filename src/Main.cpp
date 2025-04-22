@@ -59,6 +59,14 @@ public:
 };
 
 class Airship : public Ship, public Aircraft {
+	// name is inherited from both
+	// You have to specify which 'name' you're using.
+	// // Ship::name specifies that you are using Ship's name, not Aircraft's
+	// // I don't think it really matters which one. Itried replacing "Ship::name" with "Aircraft::name",
+	// // and it didn't seem to change the output.
+	// xPosition is inherited from Ship
+	// yPosition is inherited from Aircraft
+	// getName is overridden because there is one in Ship and Aircraft.
 public:
 	Airship () {
 		Ship::name = "Unnamed airship";
